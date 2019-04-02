@@ -1,6 +1,4 @@
-# DM_IGM
-
-Documentation in progress...
+# FRB Redshift Estimator
 
 Our code can be run in one of two ways: from the command line and from directly within python (compatible with versions 2/3).
 

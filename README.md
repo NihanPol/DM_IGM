@@ -1,6 +1,6 @@
 # FRB Redshift Estimator
 
-Our code can be run in one of two ways: from the command line and from directly within python (compatible with versions 2/3).
+Our code can be run in one of two ways: from the command line and from directly within python (compatible with versions 2/3). The code also needs the NE2001 code (found [here](https://www.nrl.navy.mil/rsd/RORF/ne2001/)) to be installed before the program can be executed.
 
 ## Command Line
 

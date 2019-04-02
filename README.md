@@ -11,18 +11,18 @@ usage: frbz.py [-h] [--NE2001 NEDIR] [--unweighted] [--hostdm HOSTDM]
 
 FRB Redshift Estimator
 
-positional arguments:
-  gl               Galactic latitude [deg]
-  gb               Galactic longitude [deg]
-  dm               Observed DM [pc cm$^{-3}$ ]
-  dmerr            Error on observed DM [pc cm$^{-3}$ ]
+	positional arguments:
+	  gl               Galactic latitude [deg]
+	  gb               Galactic longitude [deg]
+	  dm               Observed DM [pc cm$^{-3}$ ]
+	  dmerr            Error on observed DM [pc cm$^{-3}$ ]
 
-optional arguments:
-  -h, --help       show this help message and exit
-  --NE2001 NEDIR   Directory pointing to NE2001's bin.NE2001/
-  --unweighted     Use uniform weighted distribution (versus matter weighted
-                   distribution
-  --hostdm HOSTDM  Host DM [pc cm$^{-3}$]
+	optional arguments:
+	  -h, --help       show this help message and exit
+	  --NE2001 NEDIR   Directory pointing to the NE2001 bin.NE2001/ location
+	  --unweighted     Use uniform weighted distribution (versus matter weighted
+		           distribution
+	  --hostdm HOSTDM  Host DM [pc cm$^{-3}$]
 
 ## Python function
 

@@ -6,33 +6,36 @@ Our code can be run in one of two ways: from the command line and from directly 
 
 To calculate the redshift of an FRB, 
 
-usage: frbz.py [-h] [--NE2001 NEDIR] [--unweighted] [--hostdm HOSTDM]
-               gl gb dm dmerr
+	usage: frbz.py [-h] [--NE2001 NEDIR] [--unweighted] [--hostdm HOSTDM]
+		       [--mwdm MWDM]
+		       dm dmerr ...
 
-FRB Redshift Estimator
+	FRB Redshift Estimator
 
 	positional arguments:
-	  gl               Galactic latitude [deg]
-	  gb               Galactic longitude [deg]
-	  dm               Observed DM [pc cm$^{-3}$ 
-	  dmerr            Error on observed DM [pc cm$^{-3}$]
+	  dm               Observed DM [pc cm^-3]
+	  dmerr            Error on observed DM [pc cm^-3]
+	  galcoord         If --mwdm is not provided, two values separated by a space:
+		           Galactic latitude and Galactic longitude [deg]
 
 	optional arguments:
 	  -h, --help       show this help message and exit
-	  --NE2001 NEDIR   Directory pointing to the NE2001 bin.NE2001/ location
+	  --NE2001 NEDIR   Path pointing to the NE2001 bin.NE2001/ directory location
 	  --unweighted     Use uniform weighted distribution (versus matter weighted
 		           distribution
-	  --hostdm HOSTDM  Host DM [pc cm$^{-3}$]
+	  --hostdm HOSTDM  Host DM [pc cm^-3]
+	  --mwdm MWDM      Milky Way DM [pc cm^-3]
 
 ## Python function
 
-calcz(gl,gb,dm,dmerr,hostdm=0.0,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.NE2001/\"):
+calcz(dm,dmerr,mwarg,hostdm=0.0,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.NE2001/\"):
 
     Calculates the PDF for the redshift of the FRB
     dm        : DM value [pc cm^-3]
     dmerr     : DM error [pc cm^-3]
-    gl        : Galactic longitude [deg]
-    gb        : Galactic latitude [deg]
+    mwarg     : Either:
+              : tuple of (Galactic longitude, Galactic latitude) in [deg], or
+              : Milky Way DM [pc cm^-3]
 
     weighted  : use matter weighted distribution if true
     evaluate  : if true, returns the DM value with minus and plus errors

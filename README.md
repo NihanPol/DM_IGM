@@ -34,7 +34,7 @@ To calculate the redshift of an FRB,
 
 ## Python function
 
-calcz(dm,dmerr,mwarg,hostdm=0.0,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.NE2001/\"):
+calcz(dm,dmerr,mwarg,hostdm=0.0,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.NE2001/\")
 
     Calculates the PDF for the redshift of the FRB
     dm        : DM value [pc cm^-3]
@@ -82,7 +82,7 @@ To calculate the host DM of an FRB,
 
 ## Python function
 
-calchostDM(z,dm,dmerr,mwarg,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.NE2001/\"):
+calchostDM(z,dm,dmerr,mwarg,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.NE2001/\")
 
     Calculates the PDF for the host DM of the FRB
     z         : Redshift

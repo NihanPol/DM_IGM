@@ -45,8 +45,8 @@ def calcz(gl,gb,dm,dmerr,hostdm=0.0,weighted=True,evaluate=True,NEDIR="NE2001/bi
     Calculates the PDF for the redshift of the FRB
     dm        : DM value [pc cm^-3]
     dmerr     : DM error [pc cm^-3]
-    gl        : Galactic longitude
-    gb        : Galactic latitude
+    gl        : Galactic longitude [deg]
+    gb        : Galactic latitude [deg]
 
     weighted  : use matter weighted distribution if true
     evaluate  : if true, returns the DM value with minus and plus errors
@@ -163,14 +163,14 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser(description="FRB Redshift Estimator")
 
-    parser.add_argument('--NE2001',dest='NEDIR',default='NE2001/bin.NE2001/')
-    parser.add_argument('--unweighted',dest="unweighted",action="store_true",default=False)
-    parser.add_argument('--hostdm',dest="hostdm",action="store_const",default=0.0)
-    parser.add_argument('gl', action="store",type=float)
-    parser.add_argument('gb', action="store",type=float)
-    parser.add_argument('dm', action="store",type=float)
-    parser.add_argument('dmerr', action="store",type=float)
+    parser.add_argument('--NE2001',dest='NEDIR',default='NE2001/bin.NE2001/',help="Directory pointing to NE2001's bin.NE2001/")
+    parser.add_argument('--unweighted',dest="unweighted",action="store_true",default=False,help="Use uniform weighted distribution (versus matter weighted distribution")
+    parser.add_argument('--hostdm',type=float,default=0,help="Host DM [pc cm^-3]")#,nargs=1,dest="hostdm",action="store_const",default=0)
+    parser.add_argument('gl', action="store",type=float,help="Galactic latitude [deg]")
+    parser.add_argument('gb', action="store",type=float,help="Galactic longitude [deg]")
+    parser.add_argument('dm', action="store",type=float,help="Observed DM [pc cm^-3]")
+    parser.add_argument('dmerr', action="store",type=float,help="Error on observed DM [pc cm^-3]")
     
     results = parser.parse_args()
     weighted = not results.unweighted
-    print("z=%0.3f-%0.3f+%0.3f"%(calcz(results.gb,results.gl,results.dm,results.dmerr,hostdm=hostdm,weighted=weighted,NEDIR=results.NEDIR)))
+    print("z=%0.3f-%0.3f+%0.3f"%(calcz(results.gb,results.gl,results.dm,results.dmerr,hostdm=results.hostdm,weighted=weighted,NEDIR=results.NEDIR)))

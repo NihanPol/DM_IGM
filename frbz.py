@@ -163,7 +163,7 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser(description="FRB Redshift Estimator")
 
-    parser.add_argument('--NE2001',dest='NEDIR',default='NE2001/bin.NE2001/',help="Directory pointing to NE2001's bin.NE2001/")
+    parser.add_argument('--NE2001',dest='NEDIR',default='NE2001/bin.NE2001/',help="Directory pointing to the NE2001 bin.NE2001/ location")
     parser.add_argument('--unweighted',dest="unweighted",action="store_true",default=False,help="Use uniform weighted distribution (versus matter weighted distribution")
     parser.add_argument('--hostdm',type=float,default=0,help="Host DM [pc cm^-3]")#,nargs=1,dest="hostdm",action="store_const",default=0)
     parser.add_argument('gl', action="store",type=float,help="Galactic latitude [deg]")

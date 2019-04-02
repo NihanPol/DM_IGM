@@ -14,8 +14,8 @@ FRB Redshift Estimator
 	positional arguments:
 	  gl               Galactic latitude [deg]
 	  gb               Galactic longitude [deg]
-	  dm               Observed DM [pc cm$^{-3}$ ]
-	  dmerr            Error on observed DM [pc cm$^{-3}$ ]
+	  dm               Observed DM [pc cm$^{-3}$ 
+	  dmerr            Error on observed DM [pc cm$^{-3}$]
 
 	optional arguments:
 	  -h, --help       show this help message and exit

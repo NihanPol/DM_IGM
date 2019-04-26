@@ -12,29 +12,32 @@ These codes can be run in one of two ways: from the command line and from direct
 
 To calculate the redshift of an FRB, 
 
-	usage: frbz.py [-h] [--NE2001 NEDIR] [--unweighted] [--hostdm HOSTDM]
-		       [--mwdm MWDM]
-		       dm dmerr ...
+```
+usage: frbz.py [-h] [--NE2001 NEDIR] [--unweighted] [--ymw] [--hostdm HOSTDM]
+               [--mwdm MWDM]
+               dm dmerr ...
 
-	FRB Redshift Estimator
+FRB Redshift Estimator
 
-	positional arguments:
-	  dm               Observed DM [pc cm^-3]
-	  dmerr            Error on observed DM [pc cm^-3]
-	  galcoord         If --mwdm is not provided, two values separated by a space:
-		           Galactic latitude and Galactic longitude [deg]
+positional arguments:
+  dm               Observed DM [pc cm^-3]
+  dmerr            Error on observed DM [pc cm^-3]
+  galcoord         If --mwdm is not provided, two values separated by a space:
+                   Galactic latitude and Galactic longitude [deg]
 
-	optional arguments:
-	  -h, --help       show this help message and exit
-	  --NE2001 NEDIR   Path pointing to the NE2001 bin.NE2001/ directory location
-	  --unweighted     Use uniform weighted distribution (versus matter weighted
-		           distribution
-	  --hostdm HOSTDM  Host DM [pc cm^-3]
-	  --mwdm MWDM      Milky Way DM [pc cm^-3]
+optional arguments:
+  -h, --help       show this help message and exit
+  --NE2001 NEDIR   Path pointing to the NE2001 bin.NE2001/ directory location
+  --unweighted     Use uniform weighted distribution (versus matter weighted
+                   distribution
+  --ymw            Use YMW model instead of NE2001
+  --hostdm HOSTDM  Host DM [pc cm^-3]
+  --mwdm MWDM      Milky Way DM [pc cm^-3]
+```
 
 ## Python function
 
-calcz(dm,dmerr,mwarg,hostdm=0.0,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.NE2001/\")
+calcz(dm,dmerr,mwarg,hostdm=0.0,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.NE2001/\", ymw = False)
 
     Calculates the PDF for the redshift of the FRB
     dm        : DM value [pc cm^-3]
@@ -45,6 +48,7 @@ calcz(dm,dmerr,mwarg,hostdm=0.0,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.N
 
     weighted  : use matter weighted distribution if true
     evaluate  : if true, returns the DM value with minus and plus errors
+    ymw	: Set flag to true to use YMW16 model instead of NE2001 model
     -----
     Returns
     * A PDF instance of the redshift if evaluate = False
@@ -61,28 +65,31 @@ calcz(dm,dmerr,mwarg,hostdm=0.0,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.N
 
 To calculate the host DM of an FRB, 
 
-	usage: frbhostdm.py [-h] [--NE2001 NEDIR] [--unweighted] [--mwdm MWDM]
-		            z dm dmerr ...
+```
+usage: frbhostdm.py [-h] [--NE2001 NEDIR] [--unweighted] [--ymw] [--mwdm MWDM]
+                    z dm dmerr ...
 
-	FRB Host DM Estimator
+FRB Host DM Estimator
 
-	positional arguments:
-	  z               Redshift
-	  dm              Observed DM [pc cm^-3]
-	  dmerr           Error on observed DM [pc cm^-3]
-	  galcoord        If --mwdm is not provided, two values separated by a space:
-		          Galactic latitude and Galactic longitude [deg]
+positional arguments:
+  z               Redshift
+  dm              Observed DM [pc cm^-3]
+  dmerr           Error on observed DM [pc cm^-3]
+  galcoord        If --mwdm is not provided, two values separated by a space:
+                  Galactic latitude and Galactic longitude [deg]
 
-	optional arguments:
-	  -h, --help      show this help message and exit
-	  --NE2001 NEDIR  Path pointing to the NE2001 bin.NE2001/ directory location
-	  --unweighted    Use uniform weighted distribution (versus matter weighted
-		          distribution
-	  --mwdm MWDM     Milky Way DM [pc cm^-3]
+optional arguments:
+  -h, --help      show this help message and exit
+  --NE2001 NEDIR  Path pointing to the NE2001 bin.NE2001/ directory location
+  --unweighted    Use uniform weighted distribution (versus matter weighted
+                  distribution
+  --ymw           Use YMW model instead of NE2001
+  --mwdm MWDM     Milky Way DM [pc cm^-3]
+```
 
 ## Python function
 
-calchostDM(z,dm,dmerr,mwarg,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.NE2001/\")
+calchostDM(z,dm,dmerr,mwarg,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.NE2001/\", ymw = False)
 
     Calculates the PDF for the host DM of the FRB
     z         : Redshift
@@ -94,6 +101,7 @@ calchostDM(z,dm,dmerr,mwarg,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.NE200
 
     weighted  : use matter weighted distribution if true
     evaluate  : if true, returns the DM value with minus and plus errors
+    ymw	: Set flag to true to use YMW16 model instead of NE2001 model
     -----
     Returns
     * A PDF instance of the redshift if evaluate = False

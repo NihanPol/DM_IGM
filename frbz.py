@@ -8,6 +8,9 @@ import NE2001
 import argparse
 import sys
 
+#Test addition of pyymw16
+import pyymw16
+
 
 
 # ==================================================
@@ -41,7 +44,7 @@ def normalize_area(array,x=None,full=False):
 # ==================================================
 # Primary function
 # ==================================================
-def calcz(dm,dmerr,mwarg,hostdm=0.0,weighted=True,evaluate=True,NEDIR="NE2001/bin.NE2001/"):
+def calcz(dm,dmerr,mwarg,hostdm=0.0,weighted=True,evaluate=True,NEDIR="NE2001/bin.NE2001/", ymw = False):
     """
     Calculates the PDF for the redshift of the FRB
     dm        : DM value [pc cm^-3]
@@ -124,7 +127,10 @@ def calcz(dm,dmerr,mwarg,hostdm=0.0,weighted=True,evaluate=True,NEDIR="NE2001/bi
     '''
     if isinstance(mwarg,(tuple,list)):
         gl, gb = mwarg
-        mwdm = NE2001.NE2001(gl,gb,50.0,ndir=-1,DIR=NEDIR)['output']['DM']
+        if ymw:
+            mwdm = pyymw16.dist_to_dm(gl, gb, 50e3)[0].value
+        else:
+            mwdm = NE2001.NE2001(gl,gb,50.0,ndir=-1,DIR=NEDIR)['output']['DM']
     else:
         mwdm = mwarg
     xs = np.arange(0,200,0.01)
@@ -171,6 +177,8 @@ if __name__ == "__main__":
 
     parser.add_argument('--NE2001',dest='NEDIR',default='NE2001/bin.NE2001/',help="Path pointing to the NE2001 bin.NE2001/ directory location")
     parser.add_argument('--unweighted',dest="unweighted",action="store_true",default=False,help="Use uniform weighted distribution (versus matter weighted distribution")
+    #Additional flag for YMW16 model
+    parser.add_argument('--ymw', dest='ymw',action='store_true',default=False,help="Use YMW model instead of NE2001")
     parser.add_argument('--hostdm',type=float,default=0.0,help="Host DM [pc cm^-3]")#,nargs=1,dest="hostdm",action="store_const",default=0)
     parser.add_argument('--mwdm',type=float,default=None,help="Milky Way DM [pc cm^-3]")
     parser.add_argument('dm', action="store",type=float,help="Observed DM [pc cm^-3]")
@@ -179,10 +187,11 @@ if __name__ == "__main__":
     
     results = parser.parse_args()
     weighted = not results.unweighted
+    ymw = results.ymw
     if results.mwdm is not None: # Do not use NE2001
-        print("z=%0.3f-%0.3f+%0.3f"%(calcz(results.dm,results.dmerr,results.mwdm,hostdm=results.hostdm,weighted=weighted,NEDIR=results.NEDIR)))
+        print("z=%0.3f-%0.3f+%0.3f"%(calcz(results.dm,results.dmerr,results.mwdm,hostdm=results.hostdm,weighted=weighted,NEDIR=results.NEDIR, ymw = ymw)))
     else:
         gb, gl = results.galcoord
-        print("z=%0.3f-%0.3f+%0.3f"%(calcz(results.dm,results.dmerr,(gb,gl),hostdm=results.hostdm,weighted=weighted,NEDIR=results.NEDIR)))
+        print("z=%0.3f-%0.3f+%0.3f"%(calcz(results.dm,results.dmerr,(gb,gl),hostdm=results.hostdm,weighted=weighted,NEDIR=results.NEDIR, ymw = ymw)))
 
 

@@ -3,6 +3,15 @@ import scipy.interpolate as interpolate
 import scipy.special as special
 import matplotlib.pyplot as plt
 import copy
+import sys
+
+#Set some variables to ensure compatibility with python 2.xx and 3.yy
+if sys.version_info.major == 2:
+    fmap = map    
+elif sys.version_info.major == 3:
+    fmap = lambda x,*args: list(map(x,*args))
+    xrange = range
+    long = int
 
 
 EPS = special.erf(1.0/np.sqrt(2))/2.0
@@ -30,7 +39,7 @@ def sigfig(x,xm,xp,eps=0.00000001): # eps fixes rounding errors
         rxm = format(rxm,'0.%if'%arg)
         rxp = format(rxp,'0.%if'%arg)
     except ValueError:
-        print "Error:",rx,arg
+        print("Error:",rx,arg)
 
     return rx, rxm, rxp
 

@@ -48,7 +48,7 @@ calcz(dm,dmerr,mwarg,hostdm=0.0,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.N
 
     weighted  : use matter weighted distribution if true
     evaluate  : if true, returns the DM value with minus and plus errors
-    ymw	      : Set flag to true to use YMW16 model instead of NE2001 model
+    ymw	: Set flag to true to use YMW16 model instead of NE2001 model
     -----
     Returns
     * A PDF instance of the redshift if evaluate = False
@@ -101,7 +101,7 @@ calchostDM(z,dm,dmerr,mwarg,weighted=True,evaluate=True,NEDIR=\"NE2001/bin.NE200
 
     weighted  : use matter weighted distribution if true
     evaluate  : if true, returns the DM value with minus and plus errors
-    ymw	      : Set flag to true to use YMW16 model instead of NE2001 model
+    ymw	: Set flag to true to use YMW16 model instead of NE2001 model
     -----
     Returns
     * A PDF instance of the redshift if evaluate = False

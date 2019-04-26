@@ -58,6 +58,7 @@ def calchostDM(z,dm,dmerr,mwarg,weighted=True,evaluate=True,NEDIR="NE2001/bin.NE
 
     weighted  : use matter weighted distribution if true
     evaluate  : if true, returns the DM value with minus and plus errors
+    ymw       : Set flag to true to use YMW16 model instead of NE2001
     -----
     Returns
     * A PDF instance of the redshift if evaluate = False

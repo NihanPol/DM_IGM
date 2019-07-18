@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/173153334.svg)](https://zenodo.org/badge/latestdoi/173153334)
+
 The codes below perform the calculations as described in [Pol, Lam, McLaughlin, Lazio, and Cordes (2019)](http://adsabs.harvard.edu/abs/2019arXiv190307630P). We have two components. The first estimates the redshift of an FRB given an observed DM. The second estimates the host DM of an FRB given the redshift.
 
 These codes can be run in one of two ways: from the command line and from directly within python (compatible with versions 2/3). The code also needs the NE2001 code (found [here](http://astrosun2.astro.cornell.edu/~cordes/NE2001/)) to be installed before the program can be executed.
